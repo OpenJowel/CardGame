@@ -1,9 +1,9 @@
-#ifndef DEALER_H
-#define DEALER_H
+#ifndef DEALER_HPP
+#define DEALER_HPP
 
 #include <vector>
-#include "Player.h"
-#include "Card.h"
+#include "GameComponents/Player.hpp"
+#include "GameComponents/Card.hpp"
 
 struct GameComponents;
 
@@ -23,4 +23,4 @@ class Dealer
         GameComponents& m_gameComponents;
 };
 
-#endif // DEALER_H
+#endif // DEALER_HPP

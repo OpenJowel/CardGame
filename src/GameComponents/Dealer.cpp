@@ -1,4 +1,4 @@
-#include "Dealer.h"
+#include "GameComponents/Dealer.hpp"
 
 
 Dealer::Dealer(GameComponents& gameComponents) : m_gameComponents(gameComponents)

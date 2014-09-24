@@ -1,10 +1,10 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
 
 #include <stack>
 #include <list>
 #include <vector>
-#include "Card.h"
+#include "GameComponents/Card.hpp"
 
 
 class Player
@@ -33,4 +33,4 @@ class Player
         std::vector<Card*> m_faceDownCards;
 };
 
-#endif // PLAYER_H
+#endif // PLAYER_HPP

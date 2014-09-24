@@ -1,4 +1,4 @@
-#include "GameComponents.hpp"
+#include "GameComponents/GameComponents.hpp"
 
 
 GameComponents::GameComponents()

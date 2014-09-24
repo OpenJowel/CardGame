@@ -1,5 +1,5 @@
-#ifndef CARD_H
-#define CARD_H
+#ifndef CARD_HPP
+#define CARD_HPP
 
 class Card
 {
@@ -23,4 +23,4 @@ bool operator<(Card const& c1, Card const& c2);
 bool operator>(Card const& c1, Card const& c2);
 bool operator==(Card const& c1, Card const& c2);
 
-#endif // CARD_H
+#endif // CARD_HPP

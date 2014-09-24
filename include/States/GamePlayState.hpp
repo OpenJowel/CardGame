@@ -1,11 +1,11 @@
-#ifndef GAMEPLAYSTATE_H
-#define GAMEPLAYSTATE_H
+#ifndef GAMEPLAYSTATE_HPP
+#define GAMEPLAYSTATE_HPP
 
 #include <CW/GameState.hpp>
 #include <SFML/System/Clock.hpp>
 #include <vector>
-#include "GameComponents.hpp"
-#include "Dealer.h"
+#include "GameComponents/GameComponents.hpp"
+#include "GameComponents/Dealer.hpp"
 
 #define TURN_DURATION 10
 
@@ -20,7 +20,6 @@ class GamePlayState : public cw::GameState
         void update();
         void render(sf::RenderTarget& target, float interpolation = 0);
 
-
     protected:
 
 
@@ -32,4 +31,4 @@ class GamePlayState : public cw::GameState
         sf::Clock       m_turnTimer;
 };
 
-#endif // GAMEPLAYSTATE_H
+#endif // GAMEPLAYSTATE_HPP

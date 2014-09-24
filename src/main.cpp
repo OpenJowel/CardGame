@@ -1,6 +1,6 @@
 #include <iostream>
 #include <CW/GameEngine.hpp>
-#include "GamePlayState.h"
+#include "States/GamePlayState.hpp"
 
 using namespace std;
 

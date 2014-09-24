@@ -1,4 +1,4 @@
-#include "Card.h"
+#include "GameComponents/Card.hpp"
 
 Card::Card(Suit suit, Value value) : m_suit(suit), m_value(value)
 {}

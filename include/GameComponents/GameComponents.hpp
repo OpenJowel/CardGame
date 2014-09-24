@@ -3,8 +3,8 @@
 
 #include <vector>
 #include <stack>
-#include "Player.h"
-#include "Card.h"
+#include "GameComponents/Player.hpp"
+#include "GameComponents/Card.hpp"
 
 class GameComponents
 {

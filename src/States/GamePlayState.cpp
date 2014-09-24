@@ -1,4 +1,4 @@
-#include "GamePlayState.h"
+#include "States/GamePlayState.hpp"
 
 GamePlayState::GamePlayState(cw::GameEngine& engine, std::vector<Player*>& players) : GameState(engine), m_dealer(m_gameComponents)
 {
