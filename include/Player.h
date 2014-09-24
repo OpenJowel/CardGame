@@ -1,32 +1,36 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <iostream>
+#include <stack>
 #include <list>
+#include <vector>
 #include "Card.h"
 
 
 class Player
 {
     public:
+
+        enum CardGroup {FACE_DOWN, FACE_UP, HAND};
+
         Player();
-        //Player(unsigned int posX, unsigned int posY);
-        Player(unsigned int angle);
         virtual ~Player();
-        void receiveCardFromDealer(Card card);
-        void pickCard(Card card);
-        void takeGameStack(std::list<Card> gameStack);
-        std::list<Card> handCards() const;
-        std::list<Card> faceUpCards() const;
-        std::list<Card> faceDownCards() const;
 
+        void drawCard(std::stack<Card*>& deck);
+        void takeGameStack(std::stack<Card*>& gameStack);
 
-    private:
-    	//sf::Vector2<unsigned int> m_position;
-		unsigned int m_angle;
-        std::list<Card> m_handCards;
-        std::list<Card> m_faceUpCards;
-        std::list<Card> m_faceDownCards;
+        void addCard(Card* card, CardGroup group);
+        void clearCards();
+
+        const std::list<Card*>& getHand() const;
+        const std::vector<Card*>& getFaceUpCards() const;
+        const std::vector<Card*>& getFaceDownCards() const;
+
+    protected:
+
+        std::list<Card*> m_hand;
+        std::vector<Card*> m_faceUpCards;
+        std::vector<Card*> m_faceDownCards;
 };
 
 #endif // PLAYER_H

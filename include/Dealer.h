@@ -1,37 +1,26 @@
 #ifndef DEALER_H
 #define DEALER_H
 
-#include <deque>
 #include <vector>
-#include <iostream>
-#include <stdlib.h>
-#include <time.h>
 #include "Player.h"
+#include "Card.h"
 
+struct GameComponents;
 
 class Dealer
 {
     public:
-        Dealer();
-        Dealer(sf::RenderWindow* window);
+
+        Dealer(GameComponents& gameComponents);
         virtual ~Dealer();
-        void newGame(unsigned int playerQuantity);
-		void shuffle();
-		void deal();
-		void displayPlayers();
 
-        /* Debugging methods */
-        void printDeque();
-
+        void setTable();
+        void dealStartingCards();
+		void dealTo(Player* player);
 
     private:
-        std::deque<Card> m_dealingStack;
-        std::deque<Card> m_gameStack;
-        std::vector<Player> m_players;
-        unsigned int m_token;
-		sf::RenderWindow* m_window;
-		sf::Texture m_cardsTheme;
 
+        GameComponents& m_gameComponents;
 };
 
 #endif // DEALER_H

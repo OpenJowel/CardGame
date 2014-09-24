@@ -1,85 +1,33 @@
 #include "Card.h"
 
-using namespace std;
+Card::Card(Suit suit, Value value) : m_suit(suit), m_value(value)
+{}
 
-Card::Card()
+
+Card::Suit Card::getSuit()
 {
-    //ctor
+    return m_suit;
 }
 
 
-Card::Card(unsigned int face, unsigned int suit, int posX, int posY, sf::Texture* texture) : 	m_face(face),
-																								m_suit(suit),
-																								m_faceUp(false),
-																								m_position(posX, posY),
-																								m_texture(texture),
-																								m_width(79),
-																								m_height(123)
-
+Card::Value Card::getValue()
 {
-
+    return m_value;
 }
 
 
-Card::~Card()
+bool operator<(Card& c1, Card& c2)
 {
-
+    return c1.getValue() < c2.getValue();
 }
 
 
-unsigned int Card::face()
+bool operator>(Card& c1, Card& c2)
 {
-	return m_face;
+    return c1.getValue() > c2.getValue();
 }
 
-
-unsigned int Card::suit()
+bool operator==(Card& c1, Card& c2)
 {
-	return m_suit;
-}
-
-void Card::show()
-{
-	m_faceUp = true;
-}
-
-
-void Card::hide()
-{
-	m_faceUp = false;
-}
-
-
-void Card::setPosition(unsigned int posX, unsigned int posY)
-{
-
-}
-
-
-
-void Card::setAngle(unsigned int angle)
-{
-    m_angle = angle;
-}
-
-
-void Card::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-
-	sf::Sprite card;
-	card.setTexture(*m_texture);
-	card.setOrigin(m_width/2, m_height/2);
-
-
-	if(m_faceUp)
-		card.setTextureRect(sf::IntRect((m_face - 1) * m_width, (m_suit - 1) * m_height, m_width, m_height));
-	else
-		card.setTextureRect(sf::IntRect(0, (4) * m_height, m_width, m_height));
-
-
-	card.setPosition(m_position.x, m_position.y);
-
-	card.rotate(m_angle);
-
-	target.draw(card);
+    return c1.getValue() == c2.getValue();
 }

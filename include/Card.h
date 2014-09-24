@@ -1,35 +1,26 @@
 #ifndef CARD_H
 #define CARD_H
 
-#include <SFML/Graphics.hpp>
-#include <iostream>
-
-class Card : public sf::Drawable
+class Card
 {
     public:
 
-		Card();
-        Card(unsigned int face, unsigned int suit, int posX, int posY, sf::Texture* texture);
-        virtual ~Card();
-        unsigned int face();
-        unsigned int suit();
-        void show();
-        void hide();
-		void setPosition(unsigned int posX, unsigned int posY);
-		void setAngle(unsigned int angle);
-        void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+        enum Suit {HEARTS, DIAMONDS, SPADES, CLUBS};
+        enum Value {TWO = 2, THREE = 3, FOUR = 4, FIVE = 5, SIX = 6, SEVEN = 7, EIGHT = 8, NINE = 9, TEN = 10, JACK = 11, QUEEN = 12, KING = 13, ACE = 14};
+
+        Card(Suit suit, Value value);
+
+        Suit getSuit();
+        Value getValue();
 
     private:
-        int m_face;
-        int m_suit;
-        bool m_faceUp;
-		sf::Vector2<unsigned int> m_position;
-        sf::Texture* m_texture;
-		unsigned int m_width;
-		unsigned int m_height;
-		unsigned int m_angle;
 
-
+        Suit m_suit;
+        Value m_value;
 };
+
+bool operator<(Card const& c1, Card const& c2);
+bool operator>(Card const& c1, Card const& c2);
+bool operator==(Card const& c1, Card const& c2);
 
 #endif // CARD_H

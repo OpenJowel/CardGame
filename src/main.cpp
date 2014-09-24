@@ -1,17 +1,15 @@
 #include <iostream>
-#include "Window.h"
-
+#include <CW/GameEngine.hpp>
+#include "GamePlayState.h"
 
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
-
-	Window window(1028, 768);
-
-	window.mainLoop();
-
-
+    cw::GameEngine cardGame(sf::VideoMode(1024, 768), "HEPIA Card Game");
+    vector<Player*> players;
+    cardGame.addState(new GamePlayState(cardGame, players));
+    cardGame.run();
 
     return 0;
 }

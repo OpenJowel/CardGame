@@ -1,17 +1,9 @@
 #include "Player.h"
 
-using namespace std;
-
 
 Player::Player()
 {
     //ctor
-}
-
-
-Player::Player(unsigned int angle)
-{
-	m_angle = angle;
 }
 
 
@@ -21,54 +13,51 @@ Player::~Player()
 }
 
 
-/* Places the cards at the right place when the dealer gives it */
-void Player::receiveCardFromDealer(Card card)
-{
-	card.setAngle(m_angle);
-
-	if(m_faceDownCards.size() < 3)
-	{
-		card.hide();
-		m_faceDownCards.push_back(card);
-	}
-	else if(m_faceUpCards.size() < 3)
-	{
-		card.show();
-		m_faceUpCards.push_back(card);
-	}
-	else
-	{
-		card.show();
-		m_handCards.push_back(card);
-	}
-}
-
-
-void Player::pickCard(Card card)
+void Player::drawCard(std::stack<Card* >& deck)
 {
 
 }
 
-
-void Player::takeGameStack(list<Card> gameStack)
+void Player::takeGameStack(std::stack<Card* >& gameStack)
 {
 
 }
 
-
-list<Card> Player::handCards() const
+void Player::addCard(Card* card, CardGroup group)
 {
-	return m_handCards;
+    switch(group)
+    {
+    case HAND:
+        m_hand.push_back(card);
+        m_hand.sort();
+        break;
+    case FACE_DOWN:
+        m_faceDownCards.push_back(card);
+        break;
+    case FACE_UP:
+        m_faceUpCards.push_back(card);
+        break;
+    }
 }
 
-
-list<Card> Player::faceUpCards() const
+void Player::clearCards()
 {
-	return m_faceUpCards;
+    m_hand.clear();
+    m_faceDownCards.clear();
+    m_faceDownCards.clear();
 }
 
-
-list<Card> Player::faceDownCards() const
+const std::list<Card*>& Player::getHand() const
 {
-	return m_faceDownCards;
+    return m_hand;
+}
+
+const std::vector<Card*>& Player::getFaceUpCards() const
+{
+    return m_faceUpCards;
+}
+
+const std::vector<Card*>& Player::getFaceDownCards() const
+{
+    return m_faceDownCards;
 }
